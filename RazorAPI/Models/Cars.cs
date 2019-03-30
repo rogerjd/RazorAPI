@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace RazorAPI.Models
 {
-    public class Cars
+    public class Car
     {
         public int Id { get; set; }
         public string Make { get; set; }
