@@ -64,9 +64,9 @@
                             <strong>${car.make} ${car.model}</strong>
                             (${car.price}
                             </span>
-                            <span class="details" data-id="${car.id}"></span>
-                            <span class="edit"></span>
-                            <span class="delete"></span>
+                            <span class="details" data-id="${car.id}">Details</span>
+                            <span class="edit" data-id="${car.id}">Edit</span>
+                            <span class="delete" data-id="${car.id}">Delete</span>
                             </li>`;
                         $('#car-list').append(item);
                     });
