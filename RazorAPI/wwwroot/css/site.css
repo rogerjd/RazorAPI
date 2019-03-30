@@ -67,7 +67,7 @@ input {
     display: inline-block;
 }
 
-.details, .edit, .delete{
+.details, .edit, .delete {
     cursor: pointer;
     color: #337ab7;
     text-decoration: underline;
