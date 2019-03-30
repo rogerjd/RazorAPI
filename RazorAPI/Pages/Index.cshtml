@@ -86,10 +86,54 @@
             clearForm();
             loadCars();
             $('#car-list').on('click', '.edit, .details', function () {
-
+                var cmd = $(this);
+                $.get(`api/car/${cmd.data('id')}`).done(function (car) {
+                    if (cmd.hasClass('details')) {
+                        clearForm();
+                        $('#details').empty().append(
+                            `<h3>Details</h3>
+                            <strong>${car.make} ${car.model}</strong ></br >
+                            $${car.price}<br>
+                            Doors: ${car.doors}<br>
+                            Year: ${car.year}<br>
+                            Colour: ${car.colour}<br>
+                            `
+                        );
+                    } else {
+                        showForm();
+                        $('#id').val(car.id);
+                        $('#Make').val(car.make);
+                        $('#Model').val(car.model);
+                        $('#Colour').val(car.colour);
+                        $('#Year').val(car.year);
+                        $('#Doors').val(car.doors);
+                        $('#Price').val(car.price);
+                    }
+                });
             });
             $('#save').on('click', function (e) {
-
+                e.preventDefault();
+                var url = '/api/car';
+                var method = 'post';
+                if ($('#Id').val() !== '') {
+                    url += $('#Id').val();
+                    method = 'put';
+                }
+                var car = {};
+                $.each($(this).closest('form').serializeArray(), function () {
+                    if (this.name !== 'Id' || (this.name === 'Id' && this.value !== '')) {
+                        car[this.name] = this.value || '';
+                    }   
+                });
+                $.ajax({
+                    type: method,
+                    url: url,
+                    data: JSON.stringify(car),
+                    contentType: 'application/json'
+                }).done(function () {
+                    clearForm();
+                    loadCars();
+                })
             });
             $('#car-list').on('click', '.delete', function () {
 
