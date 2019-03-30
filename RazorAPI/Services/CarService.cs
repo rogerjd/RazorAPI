@@ -28,17 +28,23 @@ namespace RazorAPI.Services
 
             public void Create(Car car)
             {
-                throw new NotImplementedException();
+                var cars = ReadAll();
+                car.Id = cars.Max(c => c.Id) + 1;
+                cars.Add(car);
+                _cache.Set("CarList", cars);
             }
 
             public void Delete(int id)
             {
-                throw new NotImplementedException();
+                var cars = ReadAll();
+                var deletedCar = Read(id);
+                cars.Remove(deletedCar);
+                _cache.Set("CarList", cars);
             }
 
             public Car Read(int id)
             {
-                throw new NotImplementedException();
+                return ReadAll().Single(c => c.Id == id);
             }
 
             public List<Car> ReadAll()
@@ -58,9 +64,16 @@ namespace RazorAPI.Services
                 return _cache.Get<List<Car>>("CarList");
             }
 
-            public void Update(Car car)
+            public void Update(Car modifiedCar)
             {
-                throw new NotImplementedException();
+                var cars = ReadAll();
+                var car = Read(modifiedCar.Id);
+                car.Make = modifiedCar.Make;
+                car.Model = modifiedCar.Model;
+                car.Doors = modifiedCar.Doors;
+                car.Colour = modifiedCar.Colour;
+                car.Year = modifiedCar.Year;
+                _cache.Set("CarList", cars);
             }
         }
     }
