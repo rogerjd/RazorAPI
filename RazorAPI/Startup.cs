@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using static RazorAPI.Services.CarService;
 
 namespace RazorAPI
 {
@@ -33,6 +34,8 @@ namespace RazorAPI
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMemoryCache();
+            services.AddTransient<ICarService, CarServive>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
