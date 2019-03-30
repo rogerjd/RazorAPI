@@ -15,4 +15,39 @@
         <ul id="car-list"></ul>
         <button class="btn btn-sm btn-default" id="new">Add New</button>
     </div>
+    <div class="col-lg-6">
+        <div id="details"></div>
+        <div id="form">
+            <form class="form-horizontal">
+                <input type="hidden" asp-for="Id" />
+                <div class="form-group">
+                    <label for="Make">Make</label>
+                    <input type="text" asp-for="Make" class="form-control input-sm" />
+                </div>
+                <div class="form-group">
+                    <label for="Make">Model</label>
+                    <input type="text" asp-for="Model" class="form-control input-sm" />
+                </div>
+                <div class="form-group">
+                    <label for="Make">Colour</label>
+                    <input type="text" asp-for="Colour" class="form-control input-sm" />
+                </div>
+                <div class="form-group">
+                    <label for="Make">Year</label>
+                    <input type="text" asp-for="Year" class="form-control input-sm" />
+                </div>
+                <div class="form-group">
+                    <label for="Make">Doors</label>
+                    <input type="text" asp-for="Doors" class="form-control input-sm" />
+                </div>
+                <div class="form-group">
+                    <label for="Make">Price</label>
+                    <input type="text" asp-for="Price" class="form-control input-sm" />
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary btn-sm" id="save">Submit</button>  
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
