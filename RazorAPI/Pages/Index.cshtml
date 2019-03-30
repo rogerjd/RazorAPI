@@ -136,7 +136,13 @@
                 })
             });
             $('#car-list').on('click', '.delete', function () {
-
+                $.ajax({
+                    type: 'delete',
+                    url: '/api/car' + $(this).data('id'),
+                }).done(function () {
+                    clearForm();
+                    loadCars();
+                })
             });
         });
     </script>
