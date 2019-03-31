@@ -41,7 +41,7 @@ namespace RazorAPI.Services
                 var cars = ReadAll();
                 var deletedCar = Read(id);
                 cars.Remove(deletedCar);
-                _cache.Set("KeyName", cars);
+                _cache.Set(KeyName, cars);
             }
 
             public Car Read(int id)
@@ -51,7 +51,7 @@ namespace RazorAPI.Services
 
             public List<Car> ReadAll()
             {
-                if (_cache.Get("KeyName") == null)
+                if (_cache.Get(KeyName) == null)
                 {
                     List<Car> cars = new List<Car>
                     {
@@ -61,9 +61,9 @@ namespace RazorAPI.Services
                         new Car{Id=4, Make="Mercedes-Benz", Model="GLE 635", Year=2017, Doors=5, Colour="Blue", Price=83995},
                         new Car{Id=5, Make="BMW", Model="X6 M", Year=2016, Doors=5, Colour="Silver", Price=62995}
                     };
-                    _cache.Set("KeyName", cars);
+                    _cache.Set(KeyName, cars);
                 }
-                return _cache.Get<List<Car>>("KeyName");
+                return _cache.Get<List<Car>>(KeyName);
             }
 
             public void Update(Car modifiedCar)
@@ -75,7 +75,7 @@ namespace RazorAPI.Services
                 car.Doors = modifiedCar.Doors;
                 car.Colour = modifiedCar.Colour;
                 car.Year = modifiedCar.Year;
-                _cache.Set("KeyName", cars);
+                _cache.Set(KeyName, cars);
             }
         }
     }

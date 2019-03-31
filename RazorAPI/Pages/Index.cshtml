@@ -55,13 +55,10 @@
 @section scripts{
     <script type="text/javascript">
         $(function () {
-            alert("ready");
             var loadCars = function () {
-                alert("load cars");
                 $('#car-list').empty();
                 $.get('/api/car').done(function (cars) {
                     $.each(cars, function (i, car) {
-                        alert("car");
                         var item = `<li>
                             <span class="entry">
                             <strong>${car.make} ${car.model}</strong>
@@ -141,7 +138,7 @@
             $('#car-list').on('click', '.delete', function () {
                 $.ajax({
                     type: 'delete',
-                    url: '/api/car' + $(this).data('id'),
+                    url: '/api/car/' + $(this).data('id'),
                 }).done(function () {
                     clearForm();
                     loadCars();
