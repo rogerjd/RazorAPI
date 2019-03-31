@@ -69,6 +69,7 @@ namespace RazorAPI.Services
             public void Update(Car modifiedCar)
             {
                 var cars = ReadAll();
+                //var car = cars.Single(c => c.Id == modifiedCar.Id);
                 var car = Read(modifiedCar.Id);
                 car.Make = modifiedCar.Make;
                 car.Model = modifiedCar.Model;

@@ -101,7 +101,7 @@
                         );
                     } else {
                         showForm();
-                        $('#id').val(car.id);
+                        $('#Id').val(car.id);
                         $('#Make').val(car.make);
                         $('#Model').val(car.model);
                         $('#Colour').val(car.colour);
@@ -113,7 +113,7 @@
             });
             $('#save').on('click', function (e) {
                 e.preventDefault();
-                var url = '/api/car';
+                var url = '/api/car/';
                 var method = 'post';
                 if ($('#Id').val() !== '') {
                     url += $('#Id').val();
