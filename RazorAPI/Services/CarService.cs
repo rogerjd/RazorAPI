@@ -76,7 +76,8 @@ namespace RazorAPI.Services
                 car.Doors = modifiedCar.Doors;
                 car.Colour = modifiedCar.Colour;
                 car.Year = modifiedCar.Year;
-                _cache.Set(KeyName, cars);
+                car.Price = modifiedCar.Price;
+                //_cache.Set(KeyName, cars);
             }
         }
     }
